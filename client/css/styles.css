@@ -1,0 +1,28 @@
+head{
+    align-items: center;
+}
+body{
+    background-color: gainsboro;
+}
+button {
+  margin-left: 20px; 
+}
+ol{
+    align-items: center;
+}
+.title {
+  display: flex;
+  align-items: center; /* Centers vertically */
+  justify-content: center; /* Centers horizontally */
+  height: 100px; /* Set a height for the container */
+}
+.body {
+  display: flex;
+  align-items: center; /* Centers vertically */
+  justify-content: center; /* Centers horizontally */
+  /*height: 100px; /* Set a height for the container */
+}
+.subheader {
+    display: flex;
+    justify-content: center;
+}

@@ -9,3 +9,5 @@ The plan is to first create a basic webapp that creates grocery lists for the us
 Created a very basic html page with a title two input text boxes and an "add to list" button. When the button is pressed the text in the input line is added to a dynamic list and is displayed to the user with an "acquired button" that deletes the item from the list.
 
 Next time i'll need to add the locations section to the list so items will be divided by where they'll be found in the store to make it easier for the user to collect items in similar locations.
+
+Day 2 (1/15/2026): Struggled for a couple of hours trying to create a dynamic list inside of a list within Javascript. Decided to take a break and play around with CSS a little bit and made the page look just a little more interesting. Also was able to add the ability to add the location of the items but still need to figure out how to create seperate categories in the list and then add elements to each category without creating a new category that already exists. But I feel like I learned a bit more of how Javascript and HTML work together!
