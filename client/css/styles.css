@@ -2,7 +2,7 @@ head{
     align-items: center;
 }
 body{
-    background-color: ;
+    background-color: white;
 }
 button {
   margin-left: 20px; 
@@ -38,7 +38,6 @@ ol{
     display: flex;
     justify-content: center !important;
     align-items: center;
-    
     padding: 10px;
     margin-bottom: 5px;
     list-style-type: none;

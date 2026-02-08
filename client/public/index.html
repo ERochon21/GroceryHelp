@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="title">
-    <!-- Your content here -->
+            
     <h1>Welcome to the Grocery Help Project!</h1>
     </div>
     <div class="itemInsert">
@@ -21,6 +21,17 @@
         <p>
             <label for="itemLocation">Location:</label>
             <input type="text" id="itemLocation" name="itemLocation" placeholder="Where is the item located?">
+        </p>
+        <p>
+            <label for="quantity">Quantity:</label>
+            <input type="text" id="itemQuant" name="itemQuant" placeholde="Input value" size="1">
+            <select id="measurment" name="measurment">
+                <option value="Units">Units</option>
+                <option value="fl oz">fl oz</option>
+                <option value="oz">oz</option>
+                <option value="lbs">lbs</option>
+                <option value="Cans">Cans</option>
+            </select>
         </p>
         <p>
             <button id="addButton">Add to List</button>

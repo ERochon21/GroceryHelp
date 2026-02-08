@@ -2,17 +2,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const itemInput = document.getElementById('itemName');
     const addButton = document.getElementById('addButton');
     const location = document.getElementById('itemLocation');
+    const quantity = document.getElementById('itemQuant');
+    const measurment = document.getElementById('measurment');
     let locationList = {};
 
     addButton.addEventListener('click', () => {
-        addItem(itemInput.value, location.value);
+        addItem(itemInput.value, location.value, quantity.value, measurment.value);
         itemInput.value = '';
         location.value = '';
+        quantity.value = '';
+        measurment.value = '';
     });
 
-    function addItem(itemName, itemLocation){
+    const handleEnter = (event) =>{
+        if(event.key === 'Enter'){
+            event.preventDefault();
+            addItem(itemInput.value, location.value, quantity.value, measurment.value);
+            itemInput.value = '';
+            quantity = '';
+            location.value = '';
+        }
+    };
+
+    itemInput.addEventListener('keypress', handleEnter);
+    location.addEventListener('keypress', handleEnter);
+    quantity.addEventListener('keypress', handleEnter);
+
+    function addItem(itemName, itemLocation, itemQuantity, measurment){
         if(itemName == '') return;
-        itemName = itemName.toLowerCase();
+        itemQuantity = itemQuantity + " " + measurment;
+        if(itemQuantity == ' Units'){
+            itemQuantity = '';
+        }
+        itemName = itemName.toLowerCase() + " " + itemQuantity;
         itemLocation = itemLocation.toLowerCase();
 
 
@@ -66,4 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(ul);
         });
     }
+
+    
 });
