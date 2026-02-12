@@ -2,7 +2,7 @@ head{
     align-items: center;
 }
 body{
-    background-color: gainsboro;
+    background-color: white;
 }
 button {
   margin-left: 20px; 
@@ -15,6 +15,9 @@ ol{
   align-items: center; /* Centers vertically */
   justify-content: center; /* Centers horizontally */
   height: 100px; /* Set a height for the container */
+  background-color:rgb(37, 39, 39) ;
+  color: white;
+  
 }
 .itemInsert {
   display: flex;
@@ -29,29 +32,28 @@ ol{
 }
 .subheader {
     display: flex;
-    justify-content: center;
+    justify-content: center !important;
 }
 .list{
     display: flex;
-    justify-content: flex-start;
+    justify-content: center !important;
     align-items: center;
-    
     padding: 10px;
     margin-bottom: 5px;
     list-style-type: none;
-    background-color: brown;
+    width: 50%;
+    margin: auto;
+    flex-direction: column;
 }
 ul {
-    background: powderblue;
     list-style-type: none;
-    align-items: center;
+    
     
 }
 
 h3 {
-    background-color: blue;
     margin: 0;
     padding: 0;
     align-items: center !important;
-    text-align: center;
+    
 }
