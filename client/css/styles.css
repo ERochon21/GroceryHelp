@@ -19,6 +19,36 @@ ol{
   color: white;
   
 }
+.navbar {
+    
+    
+    background-color: rgb(37, 39, 39);
+    color: white;
+    overflow: hidden;
+}
+.navbar ul{
+    margin: 0;
+    padding: 0;
+    margin-left: 10;
+    display: flex;
+}
+.navbar li a {
+    display: block;
+    color: white; 
+    text-align: center;
+    padding: 5px 5px;
+    text-decoration: none;
+}
+.navbar li a:hover {
+    background-color: #ddd; 
+    color: black; 
+}
+
+.navbar li a.active {
+    background-color: #c5c5c5;
+    color: white;
+}
+
 .itemInsert {
   display: flex;
   align-items: center; /* Centers vertically */

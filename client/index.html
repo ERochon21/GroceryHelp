@@ -8,19 +8,28 @@
 </head>
 <body>
     <div class="title">
-            
-    <h1>Welcome to the Grocery Help Project!</h1>
+        <h1>Welcome to the Grocery Help Project!</h1>
     </div>
+
+    <div class="navbar">
+        <ul>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#login/signup">Log-in/Sign-up<a></li>
+            
+        </ul>
+    </div>
+
     <div class="itemInsert">
         <p>
             <label for="itemName">Item:</label>
             <input type="text" id="itemName" name="itemName" placeholder="Add an item to your list!">
         </p>
     </div>
+
     <div class="locationInsert">
         <p>
             <label for="itemLocation">Location:</label>
-            <input type="text" id="itemLocation" name="itemLocation" placeholder="Where is the item located?">
+            <input type="text" id="itemLocation" name="itemLocation" placeholder="Where is the item in store?">
         </p>
         <p>
             <label for="quantity">Quantity:</label>
@@ -37,6 +46,7 @@
             <button id="addButton">Add to List</button>
         </p>
     </div>
+    
     <div class="subheader">
         <h2>Grocery List:</h2>
     </div>

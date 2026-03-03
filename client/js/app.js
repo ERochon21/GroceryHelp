@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const measurment = document.getElementById('measurment');
     let locationList = {};
 
+    
     addButton.addEventListener('click', () => {
         addItem(itemInput.value, location.value, quantity.value, measurment.value);
         itemInput.value = '';
@@ -13,6 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
         quantity.value = '';
         measurment.value = '';
     });
+
+    document.addEventListener("keyup", event => {
+        if(event.key === "Enter"){
+            itemInput.focus()
+        }
+    })
 
     const handleEnter = (event) =>{
         if(event.key === 'Enter'){
@@ -46,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             locationList[itemLocation] = [itemName];
         }
-        renderLists();    
+        renderLists();
     }
 
     function removeItem(itemLocation, index){
