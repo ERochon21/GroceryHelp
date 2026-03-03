@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const itemInput = document.getElementById('itemName');
     const addButton = document.getElementById('addButton');
@@ -6,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const measurment = document.getElementById('measurment');
     let locationList = {};
 
+    
     addButton.addEventListener('click', () => {
         addItem(itemInput.value, location.value, quantity.value, measurment.value);
         itemInput.value = '';
@@ -14,12 +16,19 @@ document.addEventListener('DOMContentLoaded', () => {
         measurment.value = '';
     });
 
+    document.addEventListener("keyup", event => {
+        if(event.key === "Enter"){
+            itemInput.focus()
+        }
+    })
+
     const handleEnter = (event) =>{
         if(event.key === 'Enter'){
-            event.preventDefault();
+
             addItem(itemInput.value, location.value, quantity.value, measurment.value);
             itemInput.value = '';
-            quantity = '';
+            quantity.value = '';
+            measurment.value = '';
             location.value = '';
         }
     };
@@ -30,23 +39,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addItem(itemName, itemLocation, itemQuantity, measurment){
         if(itemName == '') return;
-        itemQuantity = itemQuantity + " " + measurment;
-        if(itemQuantity == ' Units'){
-            itemQuantity = '';
+        if(itemQuantity === '' || Number.isInteger(itemQuantity)){
+            console.log("im triggered");
+            itemQuantity = 1;
+            measurment = '';
         }
-        itemName = itemName.toLowerCase() + " " + itemQuantity;
+        itemName = itemName.toLowerCase()
         itemLocation = itemLocation.toLowerCase();
 
+        fullItemInfo = [itemName, itemQuantity, measurment];
 
-        if(itemLocation == ''){
+        if(itemLocation === ''){
             itemLocation = 'misc';
             addItem(itemName, itemLocation);
         } else if (locationList[itemLocation]){
-            locationList[itemLocation].push(itemName);
+            const existingItem = locationList[itemLocation].find(item =>
+                item[0].toLowerCase() === itemName.toLowerCase()
+            );
+            if(existingItem && existingItem[2] === measurment){
+                if(existingItem[1] === ''){
+                    existingItem[1] = Number(itemQuantity) + 1;
+                } else{
+                    existingItem[1]= Number(existingItem[1]) + Number(itemQuantity);
+                }
+            } else{
+                locationList[itemLocation].push(fullItemInfo);
+            }
+
+            
         } else {
-            locationList[itemLocation] = [itemName];
+            locationList[itemLocation] = [fullItemInfo];
         }
-        renderLists();    
+        renderLists();
     }
 
     function removeItem(itemLocation, index){
@@ -61,21 +85,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderLists(containerId = 'list-container'){
         const container = document.getElementById(containerId);
-        if(!container) return;
+        if(!container) return; 
 
         container.innerHTML = '';
 
-        Object.entries(locationList).forEach(([itemLocation, items]) =>{
+        Object.entries(locationList).forEach(([itemLocation, fullItemInfo]) =>{
             const heading = document.createElement('h3');
             heading.textContent = itemLocation.charAt(0).toUpperCase() + itemLocation.slice(1) + ':';
             container.appendChild(heading);
 
             const ul = document.createElement('ul');
 
-            items.forEach((item, index) => {
+            fullItemInfo.forEach((itemInfo, index) => {
+                console.log(locationList[itemLocation]);
+                console.log("index: " + index);
                 const li = document.createElement('li');
-                li.textContent = item.charAt(0).toUpperCase() + item.slice(1);;
-
+                const name = String(itemInfo[0]);
+                const itemName = name.charAt(0).toUpperCase() + name.slice(1);
+                const unit = itemInfo[1] || '';
+                const measurement = itemInfo[2] || '';
+                if(unit == 1 && measurement === ''){
+                    li.textContent = itemName.trim();
+                }else{
+                    li.textContent = itemName + " " + unit + " " + measurement.trim();
+                }
                 const removeBtn = document.createElement('button');
                 removeBtn.textContent = 'Remove';
                 removeBtn.onclick = () => removeItem(itemLocation, index);
