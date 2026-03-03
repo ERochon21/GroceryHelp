@@ -17,3 +17,10 @@ Day 3 (1/18/2026): Busy day today. I scrapped my whole app.js file as it just se
 Day 4: Been adding little additional fun stuff to the most specifically a quantity and measurment variable so the user can add how much of an item and in what measurment they want it! Been busy with school and internship so additions have been slow and the next big steps are large ones that I want to have time to implement properly!
 
 Day 5: Worked on getting the webapp up and running for public use. Purchased the domain name " GroceryHelp.org" and set up a server with AWS through Amplify. Happy to see its up and running properly :).
+
+Day 6: Worked out a lot of kinks in the code. Mainly restructured the way items in the list were 
+being printed. Instead of being converted into one long string (itemName + quantity + measurement)
+its now an array [itemName, quantity, measurement]. This allowed for my other changes which include: when an item is entered twice with the same measurement the quanitity is added to the 
+already listed item, checking if input from quantity is a number and not a string, and printing only item name but giving it a quantity of 1 if only 
+item name and location are given. I think these improvements will make the 
+future larger changes much more easily added!
