@@ -24,3 +24,14 @@ its now an array [itemName, quantity, measurement]. This allowed for my other ch
 already listed item, checking if input from quantity is a number and not a string, and printing only item name but giving it a quantity of 1 if only 
 item name and location are given. I think these improvements will make the 
 future larger changes much more easily added!
+
+Day 7: Very short day just had to update app.js because the list couldn't handle if two items had the same name but different measurements for example: 
+Location:
+    item1 3 Units
+    item1 2
+if we insert another item1 without a measurement it would print:
+    item1 2
+    item1 1
+instead of the desired:
+    item1 3
+So I fixed that. 

@@ -51,17 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if(itemLocation === ''){
             itemLocation = 'misc';
-            addItem(itemName, itemLocation);
+            addItem(itemName, itemLocation, itemQuantity, measurment);
         } else if (locationList[itemLocation]){
             const existingItem = locationList[itemLocation].find(item =>
-                item[0].toLowerCase() === itemName.toLowerCase()
+                item[0].toLowerCase() == itemName.toLowerCase() && item[2] == measurment 
             );
-            if(existingItem && existingItem[2] === measurment){
-                if(existingItem[1] === ''){
-                    existingItem[1] = Number(itemQuantity) + 1;
-                } else{
-                    existingItem[1]= Number(existingItem[1]) + Number(itemQuantity);
-                }
+            console.log("existing item: " + existingItem);
+            if(existingItem && existingItem[2] == measurment){
+                existingItem[1]= Number(existingItem[1]) + Number(itemQuantity);
             } else{
                 locationList[itemLocation].push(fullItemInfo);
             }
@@ -105,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const unit = itemInfo[1] || '';
                 const measurement = itemInfo[2] || '';
                 if(unit == 1 && measurement === ''){
-                    li.textContent = itemName.trim();
+                    li.textContent = itemName;
                 }else{
                     li.textContent = itemName + " " + unit + " " + measurement.trim();
                 }
